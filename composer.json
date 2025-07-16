@@ -1,0 +1,18 @@
+{
+    "name": "carpatin/php-modern-datastructures",
+    "description": "Suite of scripts that compare various PHP data structures",
+    "type": "project",
+    "require": {
+        "doctrine/collections": "^2.3",
+        "illuminate/collections": "^12.20",
+        "php-ds/php-ds": "^1.7"
+    },
+    "autoload": {
+        "psr-4": {
+            "Carpatin\\": "src/"
+        }
+    },
+    "require-dev": {
+        "symfony/var-dumper": "^7.3"
+    }
+}
