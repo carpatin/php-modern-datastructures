@@ -12,13 +12,18 @@ $string = Str::of('Résumé, déjà vu, à la carte, café, éclair, fiancé');
 dump($string);
 print $string.PHP_EOL;
 
+print "str('Résumé, déjà vu, à la carte, café, éclair, fiancé')".PHP_EOL;
+$string = str('Résumé, déjà vu, à la carte, café, éclair, fiancé');
+dump($string);
+print $string.PHP_EOL;
+
 // Trimming at both ends
 print '$string->trim("éR")->ltrim("s")->rtrim("nc")->prepend("F")->append("t")'.PHP_EOL;
 dump($string->trim('éR')->ltrim('s')->rtrim('nc')->prepend('F')->append('t'));
 
 // Chaining multiple transformations: case change, prepend, append and padding
-print '$string->lcfirst()->prepend(\'Le \')->append(\'s\')->padBoth(50, \'!\')'.PHP_EOL;
-dump($string->lcfirst()->prepend('Le ')->append('s')->padBoth(50, '!'));
+print '$string->lcfirst()->prepend(\'Le \')->append(\'s\')->padBoth(60, \'!\')'.PHP_EOL;
+dump($string->lcfirst()->prepend('Le ')->append('s')->padBoth(60, '!'));
 
 // Checking conditions about a string
 print '$string->contains(["café, éclair", "thé"])'.PHP_EOL;
