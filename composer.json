@@ -5,7 +5,9 @@
     "require": {
         "doctrine/collections": "^2.3",
         "illuminate/collections": "^12.20",
-        "php-ds/php-ds": "^1.7"
+        "php-ds/php-ds": "^1.7",
+        "illuminate/support": "^12.20",
+        "ramsey/uuid": "^4.9"
     },
     "autoload": {
         "psr-4": {
