@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Collection;
+
 require '../vendor/autoload.php';
 
 $collection = collect([1, 2, 3, 4, 5, 6, 7, 8, 9]);
@@ -95,6 +97,39 @@ dump($collection->keyBy(fn($item) => strlen($item['name'])));
 print '$collection->pluck("name")'.PHP_EOL;
 dump($collection->pluck('name'));
 
-// TODO: sort(), sortBy(), collapse()
+// Sort an array of primitive type elements
+$collection = collect([2, 5, 1, 7, 3, 6, 4]);
+print '$collection->sort()->values()->all()'.PHP_EOL;
+dump($collection->sort()->values()->all()); // ascending by default, keeps associations
 
-// TODO: macros
+print '$collection->sort()'.PHP_EOL;
+dump($collection->sort(function ($a, $b) {
+    return -($a <=> $b); // descending
+}));
+
+// Sort collection of structured elements
+$collection = collect([
+    ['name' => 'Dan', 'age' => 20],
+    ['name' => 'Alex', 'age' => 17],
+    ['name' => 'Maria', 'age' => 32],
+]);
+
+print '$collection->sortBy(fn($item) => $item["age"])'.PHP_EOL;
+dump($collection->sortBy(fn($item) => $item['age']));
+
+// Higher order messages
+print '$collection->avg->age'.PHP_EOL;
+dump($collection->avg->age);
+
+print '$collection->map->name'.PHP_EOL;
+dump($collection->map->name);
+
+// Extending Collection
+Collection::macro('legalAged', function (int $legalAge = 18) {
+    return $this->filter(fn($item) => $item['age'] >= $legalAge);
+});
+print '$collection->legalAged()'.PHP_EOL;
+dump($collection->legalAged());
+
+print '$collection->legalAged(21)'.PHP_EOL;
+dump($collection->legalAged(21));
